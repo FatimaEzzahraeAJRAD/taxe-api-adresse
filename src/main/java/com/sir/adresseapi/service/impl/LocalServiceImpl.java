@@ -1,0 +1,104 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.sir.adresseapi.service.impl;
+
+import com.sir.adresseapi.bean.Categorie;
+import com.sir.adresseapi.bean.Local;
+import com.sir.adresseapi.bean.Redevable;
+import com.sir.adresseapi.bean.Rue;
+import com.sir.adresseapi.dao.LocalDao;
+import com.sir.adresseapi.service.CategorieService;
+import com.sir.adresseapi.service.LocalService;
+import com.sir.adresseapi.service.RedevableService;
+import com.sir.adresseapi.service.RueService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ *
+ * @author user
+ */
+@Service
+public class LocalServiceImpl implements LocalService{
+    @Autowired
+    LocalDao localDao;
+     @Autowired
+    RedevableService redevableService;
+    @Autowired
+    RueService rueService;
+    @Autowired
+    CategorieService categorieService;
+
+    @Override
+    public List<Local> findByRedevableCin(String reference) {
+        return localDao.findByRedevableCin(reference);
+    }
+
+   
+
+    @Override
+    public Local findByReference(String reference) {
+        return localDao.findByReference(reference);
+    }
+
+    @Override
+    public int creer(Local local) {
+        Redevable r= local.getRedevable();
+        Rue rue=local.getRue();
+        Categorie c= local.getCategorie();
+        if(redevableService.findByCin(r.getCin())==null){
+            return -1;
+        }else if(rueService.findByReference(rue.getReference())==null){
+            return -2;
+        }else if(categorieService.findByReference(c.getReference())==null){
+            return -3;
+        }else{
+              localDao.save(local);
+        return 1;
+        }
+      
+    }
+       @Override
+    public List<Local> findAll() {
+        return localDao.findAll();
+    }
+
+    public LocalDao getLocalDao() {
+        return localDao;
+    }
+
+    public void setLocalDao(LocalDao localDao) {
+        this.localDao = localDao;
+    }
+
+    public CategorieService getCategorieService() {
+        return categorieService;
+    }
+
+    public void setCategorieService(CategorieService categorieService) {
+        this.categorieService = categorieService;
+    }
+
+    public RedevableService getRedevableService() {
+        return redevableService;
+    }
+
+    public void setRedevableService(RedevableService redevableService) {
+        this.redevableService = redevableService;
+    }
+
+    public RueService getRueService() {
+        return rueService;
+    }
+
+    public void setRueService(RueService rueService) {
+        this.rueService = rueService;
+    }
+
+ 
+    
+}
