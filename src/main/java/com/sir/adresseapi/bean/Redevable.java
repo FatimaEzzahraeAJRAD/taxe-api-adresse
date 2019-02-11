@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 
 /**
  *
+ * 
  * @author user
  */
 @Entity
