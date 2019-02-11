@@ -31,7 +31,7 @@ public class Local implements Serializable {
     private Redevable proprietaire;
     @ManyToOne
     private Rue rue;
-    private Double dernierMontantPayé;
+    private Double dernierMontantPaye = 0D;
     private int dernierMoisPaiement ;
     private int dernierAnneePaiement ;
    
@@ -89,12 +89,12 @@ public class Local implements Serializable {
         this.rue = rue;
     }
 
-    public double getDernierMontantPayé() {
-        return dernierMontantPayé;
+    public double getDernierMontantPaye() {
+        return dernierMontantPaye;
     }
 
-    public void setDernierMontantPayé(double dernierMontantPayé) {
-        this.dernierMontantPayé = dernierMontantPayé;
+    public void setDernierMontantPaye(double dernierMontantPaye) {
+        this.dernierMontantPaye = dernierMontantPaye;
     }
 
     
