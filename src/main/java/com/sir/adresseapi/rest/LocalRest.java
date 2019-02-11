@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping({"/adresse-api/local"})
 public class LocalRest {
+    
     @Autowired
     LocalService LocalService;
 
