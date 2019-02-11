@@ -18,5 +18,6 @@ public interface QuartierService {
     public Quartier findByReference(String reference);
     public int creer(Quartier quartier);
     public List<Quartier> findAll();
+    public boolean existsById(Long id);
     
 }

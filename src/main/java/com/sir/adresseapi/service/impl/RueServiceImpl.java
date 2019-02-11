@@ -39,7 +39,7 @@ public class RueServiceImpl implements RueService{
     @Override
     public int creer(Rue rue) {
         Quartier q = rue.getQuartier();
-        if(quartierService.findByReference(q.getReference())== null){
+        if(quartierService.existsById(q.getId())==false){
             return -1;
         }else{
              rueDao.save(rue);
@@ -65,6 +65,11 @@ public class RueServiceImpl implements RueService{
 
     public void setQuartierService(QuartierService quartierService) {
         this.quartierService = quartierService;
+    }
+
+    @Override
+    public boolean existsById(Long id) {
+        return rueDao.existsById(id);
     }
 
    

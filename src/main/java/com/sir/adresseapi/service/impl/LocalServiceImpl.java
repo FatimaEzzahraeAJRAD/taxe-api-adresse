@@ -50,11 +50,11 @@ public class LocalServiceImpl implements LocalService{
         Redevable r= local.getRedevable();
         Rue rue=local.getRue();
         Categorie c= local.getCategorie();
-        if(redevableService.findByCin(r.getCin())==null){
+        if(redevableService.existsById(r.getId())==false){
             return -1;
-        }else if(rueService.findByReference(rue.getReference())==null){
+        }else if(rueService.existsById(rue.getId())==false){
             return -2;
-        }else if(categorieService.findByReference(c.getReference())==null){
+        }else if(categorieService.existsById(c.getId())==false){
             return -3;
         }else{
               localDao.save(local);

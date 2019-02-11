@@ -51,5 +51,10 @@ public class RedevableServiceImpl implements RedevableService{
         this.redevabledao = redevabledao;
     }
 
+    @Override
+    public boolean existsById(Long id) {
+        return redevabledao.existsById(id);
+    }
+
  
 }

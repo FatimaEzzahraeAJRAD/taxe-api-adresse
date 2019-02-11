@@ -16,4 +16,5 @@ public interface RedevableService {
         public Redevable findByCin(String cin);
         public int creer(Redevable redevable);
         public List<Redevable> findAll();
+        public boolean existsById(Long id);
 }

@@ -29,8 +29,9 @@ public class QuartierServiceImpl implements QuartierService{
 
     @Override
     public int creer(Quartier quartier) {
-             Secteur s = secteurService.findByReference(quartier.getSecteur().getReference());
-             if(s==null){
+             Secteur s = quartier.getSecteur();
+              
+             if(secteurService.existsById(s.getId())== false){
                  return -1;
              }else{
                  quartierDao.save(quartier);
@@ -52,6 +53,10 @@ public class QuartierServiceImpl implements QuartierService{
     public List<Quartier> findAll() {
        return quartierDao.findAll();
     }
+      @Override
+    public boolean existsById(Long id) {
+        return quartierDao.existsById(id);
+    }
 
     public QuartierDao getQuartierDao() {
         return quartierDao;
@@ -69,6 +74,7 @@ public class QuartierServiceImpl implements QuartierService{
         this.secteurService = secteurService;
     }
 
+  
   
     
 }

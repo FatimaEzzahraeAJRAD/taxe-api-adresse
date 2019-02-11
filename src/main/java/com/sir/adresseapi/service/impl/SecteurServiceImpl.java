@@ -58,6 +58,10 @@ public class SecteurServiceImpl implements SecteurService{
         return secteurDao.findAll();
     }
 
-  
-  
+    @Override
+    public boolean existsById(Long id) {
+        return secteurDao.existsById(id);
+    }
+
+
 }
