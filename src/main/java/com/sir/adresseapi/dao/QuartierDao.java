@@ -19,5 +19,4 @@ import org.springframework.stereotype.Repository;
 public interface QuartierDao extends JpaRepository<Quartier, Long> {
     public List<Quartier> findBySecteurReference(String reference);
     public Quartier findByReference(String reference);
-    
 }

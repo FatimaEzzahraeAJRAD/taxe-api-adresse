@@ -38,12 +38,12 @@ public class RueServiceImpl implements RueService{
 
     @Override
     public int creer(Rue rue) {
-        Quartier q = rue.getQuartier();
-        if(quartierService.existsById(q.getId())==false){
-            return -1;
-        }else{
-             rueDao.save(rue);
-        return 1;
+      Quartier q = rue.getQuartier();
+             if(quartierService.existsById(q.getId()) == false){
+                 return -1;
+             }else{
+            rueDao.save(rue);
+            return 1;
         }
     }
     @Override
@@ -51,6 +51,11 @@ public class RueServiceImpl implements RueService{
 
         return rueDao.findAll();
     }
+     @Override
+    public boolean existsById(Long id) {
+        return rueDao.existsById(id);
+    }
+    
     public RueDao getRueDao() {
         return rueDao;
     }
@@ -67,10 +72,7 @@ public class RueServiceImpl implements RueService{
         this.quartierService = quartierService;
     }
 
-    @Override
-    public boolean existsById(Long id) {
-        return rueDao.existsById(id);
-    }
+   
 
    
     

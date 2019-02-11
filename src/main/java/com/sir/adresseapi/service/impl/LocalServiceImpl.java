@@ -48,15 +48,21 @@ public class LocalServiceImpl implements LocalService{
     @Override
     public int creer(Local local) {
         Redevable r= local.getRedevable();
+         Redevable p= local.getProprietaire();
         Rue rue=local.getRue();
         Categorie c= local.getCategorie();
         if(redevableService.existsById(r.getId())==false){
             return -1;
-        }else if(rueService.existsById(rue.getId())==false){
+        }else if(redevableService.existsById(p.getId())==false){
             return -2;
-        }else if(categorieService.existsById(c.getId())==false){
+        }
+        else if(rueService.existsById(rue.getId())==false){
             return -3;
-        }else{
+        }else if(categorieService.existsById(c.getId())==false){
+            return -4;
+        }else {
+              local.setDernierAnneePaiement(0);
+              local.setDernierMoisPaiement(0);
               localDao.save(local);
         return 1;
         }

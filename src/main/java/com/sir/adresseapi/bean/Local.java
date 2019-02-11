@@ -24,14 +24,14 @@ public class Local implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String reference;
-    private double surface;
+    private Double surface;
     @ManyToOne
     private Redevable redevable;
     @ManyToOne
     private Redevable proprietaire;
     @ManyToOne
     private Rue rue;
-    private double dernierMontantPayé;
+    private Double dernierMontantPayé;
     private int dernierMoisPaiement ;
     private int dernierAnneePaiement ;
    
@@ -89,8 +89,6 @@ public class Local implements Serializable {
         this.rue = rue;
     }
 
-    
-
     public double getDernierMontantPayé() {
         return dernierMontantPayé;
     }
@@ -99,6 +97,9 @@ public class Local implements Serializable {
         this.dernierMontantPayé = dernierMontantPayé;
     }
 
+    
+
+    
     public int getDernierMoisPaiement() {
         return dernierMoisPaiement;
     }
