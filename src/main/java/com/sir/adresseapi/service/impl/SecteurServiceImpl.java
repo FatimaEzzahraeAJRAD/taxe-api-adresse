@@ -60,8 +60,14 @@ public class SecteurServiceImpl implements SecteurService{
 
     @Override
     public boolean existsById(Long id) {
+      
         return secteurDao.existsById(id);
     }
+
+//    @Override
+//    public void deleteById(Long id) {
+//         secteurDao.deleteById(id);
+//    }
 
 
 }

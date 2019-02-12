@@ -5,12 +5,10 @@
  */
 package com.sir.adresseapi.service.impl;
 
-import com.sir.adresseapi.bean.Categorie;
 import com.sir.adresseapi.bean.Local;
 import com.sir.adresseapi.bean.Redevable;
 import com.sir.adresseapi.bean.Rue;
 import com.sir.adresseapi.dao.LocalDao;
-import com.sir.adresseapi.service.CategorieService;
 import com.sir.adresseapi.service.LocalService;
 import com.sir.adresseapi.service.RedevableService;
 import com.sir.adresseapi.service.RueService;
@@ -31,7 +29,6 @@ public class LocalServiceImpl implements LocalService{
     @Autowired
     RueService rueService;
     @Autowired
-    CategorieService categorieService;
 
     @Override
     public List<Local> findByRedevableCin(String reference) {
@@ -50,7 +47,7 @@ public class LocalServiceImpl implements LocalService{
         Redevable r= local.getRedevable();
          Redevable p= local.getProprietaire();
         Rue rue=local.getRue();
-        Categorie c= local.getCategorie();
+//        Categorie c= local.getCategorie();
         if(redevableService.existsById(r.getId())==false){
             return -1;
         }else if(redevableService.existsById(p.getId())==false){
@@ -58,11 +55,13 @@ public class LocalServiceImpl implements LocalService{
         }
         else if(rueService.existsById(rue.getId())==false){
             return -3;
-        }else if(categorieService.existsById(c.getId())==false){
-            return -4;
-        }else {
-              local.setDernierAnneePaiement(0);
-              local.setDernierMoisPaiement(0);
+        }
+//        else if(categorieService.existsById(c.getId())==false){
+//            return -4;
+//        }
+        else {
+              local.setDernierAnneePaye(0);
+              local.setDernierTrimestrePaye(0);
               localDao.save(local);
         return 1;
         }
@@ -79,14 +78,6 @@ public class LocalServiceImpl implements LocalService{
 
     public void setLocalDao(LocalDao localDao) {
         this.localDao = localDao;
-    }
-
-    public CategorieService getCategorieService() {
-        return categorieService;
-    }
-
-    public void setCategorieService(CategorieService categorieService) {
-        this.categorieService = categorieService;
     }
 
     public RedevableService getRedevableService() {

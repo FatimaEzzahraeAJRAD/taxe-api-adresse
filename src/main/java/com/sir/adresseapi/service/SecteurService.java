@@ -18,5 +18,6 @@ public interface SecteurService {
     public List<Secteur> findAll();
     public boolean existsById(Long id);
     public int creer(Secteur secteur);
+   // public void deleteById(Long id);
 
 }

@@ -32,11 +32,9 @@ public class Local implements Serializable {
     @ManyToOne
     private Rue rue;
     private Double dernierMontantPaye = 0D;
-    private int dernierMoisPaiement ;
-    private int dernierAnneePaiement ;
-   
-    @ManyToOne
-    private Categorie categorie;
+    private int dernierTrimestrePaye ;
+    private int dernierAnneePaye ;
+    private String refCategorie;
 
     public Long getId() {
         return id;
@@ -54,16 +52,14 @@ public class Local implements Serializable {
         this.reference = reference;
     }
 
-   
-
-    public double getSurface() {
+    public Double getSurface() {
         return surface;
     }
 
-    public void setSurface(double surface) {
+    public void setSurface(Double surface) {
         this.surface = surface;
     }
-
+    
     public Redevable getRedevable() {
         return redevable;
     }
@@ -89,39 +85,36 @@ public class Local implements Serializable {
         this.rue = rue;
     }
 
-    public double getDernierMontantPaye() {
+    public String getRefCategorie() {
+        return refCategorie;
+    }
+
+    public void setRefCategorie(String refCategorie) {
+        this.refCategorie = refCategorie;
+    }
+
+    public Double getDernierMontantPaye() {
         return dernierMontantPaye;
     }
 
-    public void setDernierMontantPaye(double dernierMontantPaye) {
+    public void setDernierMontantPaye(Double dernierMontantPaye) {
         this.dernierMontantPaye = dernierMontantPaye;
     }
 
-    
-
-    
-    public int getDernierMoisPaiement() {
-        return dernierMoisPaiement;
+    public int getDernierTrimestrePaye() {
+        return dernierTrimestrePaye;
     }
 
-    public void setDernierMoisPaiement(int dernierMoisPaiement) {
-        this.dernierMoisPaiement = dernierMoisPaiement;
+    public void setDernierTrimestrePaye(int dernierTrimestrePaye) {
+        this.dernierTrimestrePaye = dernierTrimestrePaye;
     }
 
-    public int getDernierAnneePaiement() {
-        return dernierAnneePaiement;
+    public int getDernierAnneePaye() {
+        return dernierAnneePaye;
     }
 
-    public void setDernierAnneePaiement(int dernierAnneePaiement) {
-        this.dernierAnneePaiement = dernierAnneePaiement;
-    }
-
-    public Categorie getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
+    public void setDernierAnneePaye(int dernierAnneePaye) {
+        this.dernierAnneePaye = dernierAnneePaye;
     }
 
     @Override

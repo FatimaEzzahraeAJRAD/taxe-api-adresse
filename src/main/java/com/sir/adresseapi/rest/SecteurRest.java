@@ -41,6 +41,10 @@ public class SecteurRest {
     public List<Secteur> findAll() {
         return secteurService.findAll();
     }
+//    @PostMapping("/del")
+//    public void deleteById(Long id) {
+//        secteurService.deleteById(id);
+//    }
 
     public SecteurService getSecteurService() {
         return secteurService;
