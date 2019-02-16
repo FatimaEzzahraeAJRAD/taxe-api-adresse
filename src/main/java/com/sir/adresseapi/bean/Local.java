@@ -6,6 +6,7 @@
 package com.sir.adresseapi.bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,16 +25,16 @@ public class Local implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String reference;
-    private Double surface;
+    private BigDecimal surface;
     @ManyToOne
     private Redevable redevable;
     @ManyToOne
     private Redevable proprietaire;
     @ManyToOne
     private Rue rue;
-    private Double dernierMontantPaye = 0D;
-    private int dernierTrimestrePaye ;
-    private int dernierAnneePaye ;
+    private BigDecimal dernierMontantPaye ;
+    private BigDecimal dernierTrimestrePaye ;
+    private BigDecimal dernierAnneePaye ;
     private String refCategorie;
 
     public Long getId() {
@@ -52,14 +53,14 @@ public class Local implements Serializable {
         this.reference = reference;
     }
 
-    public Double getSurface() {
+    public BigDecimal getSurface() {
         return surface;
     }
 
-    public void setSurface(Double surface) {
+    public void setSurface(BigDecimal surface) {
         this.surface = surface;
     }
-    
+
     public Redevable getRedevable() {
         return redevable;
     }
@@ -75,7 +76,6 @@ public class Local implements Serializable {
     public void setProprietaire(Redevable proprietaire) {
         this.proprietaire = proprietaire;
     }
-    
 
     public Rue getRue() {
         return rue;
@@ -83,6 +83,30 @@ public class Local implements Serializable {
 
     public void setRue(Rue rue) {
         this.rue = rue;
+    }
+
+    public BigDecimal getDernierMontantPaye() {
+        return dernierMontantPaye;
+    }
+
+    public void setDernierMontantPaye(BigDecimal dernierMontantPaye) {
+        this.dernierMontantPaye = dernierMontantPaye;
+    }
+
+    public BigDecimal getDernierTrimestrePaye() {
+        return dernierTrimestrePaye;
+    }
+
+    public void setDernierTrimestrePaye(BigDecimal dernierTrimestrePaye) {
+        this.dernierTrimestrePaye = dernierTrimestrePaye;
+    }
+
+    public BigDecimal getDernierAnneePaye() {
+        return dernierAnneePaye;
+    }
+
+    public void setDernierAnneePaye(BigDecimal dernierAnneePaye) {
+        this.dernierAnneePaye = dernierAnneePaye;
     }
 
     public String getRefCategorie() {
@@ -93,29 +117,7 @@ public class Local implements Serializable {
         this.refCategorie = refCategorie;
     }
 
-    public Double getDernierMontantPaye() {
-        return dernierMontantPaye;
-    }
-
-    public void setDernierMontantPaye(Double dernierMontantPaye) {
-        this.dernierMontantPaye = dernierMontantPaye;
-    }
-
-    public int getDernierTrimestrePaye() {
-        return dernierTrimestrePaye;
-    }
-
-    public void setDernierTrimestrePaye(int dernierTrimestrePaye) {
-        this.dernierTrimestrePaye = dernierTrimestrePaye;
-    }
-
-    public int getDernierAnneePaye() {
-        return dernierAnneePaye;
-    }
-
-    public void setDernierAnneePaye(int dernierAnneePaye) {
-        this.dernierAnneePaye = dernierAnneePaye;
-    }
+   
 
     @Override
     public int hashCode() {

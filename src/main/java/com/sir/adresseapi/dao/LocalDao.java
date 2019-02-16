@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface LocalDao extends JpaRepository<Local, Long>{
-    public List<Local> findByRedevableCin(String reference);
+    public List<Local> findByRedevableCin(String cin);
     public Local findByReference(String reference);
 
 }

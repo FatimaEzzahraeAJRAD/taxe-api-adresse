@@ -80,5 +80,9 @@ public class Secteur implements Serializable {
     public String toString() {
         return "com.sir.adresseapi.bean.Secteur[ id=" + id + " ]";
     }
+
+    public void setQuartier(Quartier toItem) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

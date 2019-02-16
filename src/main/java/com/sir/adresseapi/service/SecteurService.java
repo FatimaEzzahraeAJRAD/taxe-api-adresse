@@ -17,7 +17,7 @@ public interface SecteurService {
     public Secteur findByReference(String reference);
     public List<Secteur> findAll();
     public boolean existsById(Long id);
-    public int creer(Secteur secteur);
+    public Secteur creer(Secteur secteur);
    // public void deleteById(Long id);
 
 }

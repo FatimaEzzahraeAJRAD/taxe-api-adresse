@@ -13,8 +13,10 @@ import java.util.List;
  * @author user
  */
 public interface LocalService {
-     public List<Local> findByRedevableCin(String reference);
+     public List<Local> findByRedevableCin(String cin);
     public Local findByReference(String reference);
-    public int creer(Local local);
-     public List<Local> findAll();
+    //public Object[] creer(Local local);
+    public List<Local> findAll();
+    public Local creer(Local local);
+
 }

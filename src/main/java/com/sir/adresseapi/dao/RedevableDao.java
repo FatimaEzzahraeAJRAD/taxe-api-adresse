@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RedevableDao extends JpaRepository<Redevable, Long>{
-    public Redevable findByCin(String cin);
+    public Redevable findByCin(String reference);
 }

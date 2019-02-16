@@ -11,7 +11,7 @@
 	<groupId>com.sir</groupId>
 	<artifactId>adresse-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>adresse-api</name>
+	<name>taxe-api-adresse</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

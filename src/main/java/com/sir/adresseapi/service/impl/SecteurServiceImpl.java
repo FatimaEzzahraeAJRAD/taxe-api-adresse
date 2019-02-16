@@ -26,15 +26,15 @@ public class SecteurServiceImpl implements SecteurService{
   
 
     @Override
-    public int creer(Secteur secteur) {
+    public Secteur creer(Secteur secteur) {
         Secteur s=findByReference(secteur.getReference());
         if(s!=null){
-            return -1;
+            return null;
         }
         else{
            
             secteurDao.save(secteur);
-            return 1;
+            return secteur;
         }
     }
 

@@ -37,13 +37,13 @@ public class RueServiceImpl implements RueService{
     }
 
     @Override
-    public int creer(Rue rue) {
+    public Rue creer(Rue rue) {
       Quartier q = rue.getQuartier();
              if(quartierService.existsById(q.getId()) == false){
-                 return -1;
+                 return null;
              }else{
             rueDao.save(rue);
-            return 1;
+            return rue;
         }
     }
     @Override

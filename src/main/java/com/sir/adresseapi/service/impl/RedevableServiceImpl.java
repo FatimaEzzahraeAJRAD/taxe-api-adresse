@@ -23,19 +23,19 @@ public class RedevableServiceImpl implements RedevableService{
     RedevableDao redevabledao;
     
     @Override
-    public Redevable findByCin(String cin) {
-        return redevabledao.findByCin(cin);
+    public Redevable findByCin(String reference) {
+        return redevabledao.findByCin(reference);
     }
 
     @Override
-    public int creer(Redevable redevable) {
+    public  Redevable creer(Redevable redevable) {
         Redevable r = findByCin(redevable.getCin());
         if(r!=null){
-            return -1;
+            return null;
         }
         else{
             redevabledao.save(redevable);
-            return 1;
+            return redevable;
         }
     }
    @Override

@@ -6,6 +6,8 @@
 package com.sir.adresseapi.rest;
 
 import com.sir.adresseapi.bean.Redevable;
+import com.sir.adresseapi.rest.converter.RedevableConverter;
+import com.sir.adresseapi.rest.vo.RedevableVo;
 import com.sir.adresseapi.service.RedevableService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,22 +23,25 @@ import org.springframework.web.bind.annotation.RestController;
  * @author user
  */
 @RestController
-@RequestMapping({"/adresse-api/redevable"})
+@RequestMapping({"/taxe-api-souk/redevable"})
 public class RedevableRest {
     @Autowired
     RedevableService redevableService;
 
-    @GetMapping("/cin/{cin}")
-    public Redevable findByCin(@PathVariable String cin) {
-        return redevableService.findByCin(cin);
+    @GetMapping("/reference/{reference}")
+    public RedevableVo findByCin(@PathVariable String reference) {
+        return  new RedevableConverter().toVo(redevableService.findByCin(reference));
     }
     @PostMapping("/")
-    public int creer(@RequestBody Redevable redevable) {
-        return redevableService.creer(redevable);
+    public RedevableVo creer(@RequestBody RedevableVo redevableVo) {
+          RedevableConverter redevableConverter =new RedevableConverter();
+        Redevable myRedevable = redevableConverter.toItem(redevableVo);
+        Redevable redevable =redevableService.creer(myRedevable);
+        return redevableConverter.toVo(redevable);
     }
     @GetMapping("/all")
-    public List<Redevable> findAll() {
-        return redevableService.findAll();
+    public List<RedevableVo> findAll() {
+        return new RedevableConverter().toVo(redevableService.findAll());
     }
 
     public RedevableService getRedevableService() {

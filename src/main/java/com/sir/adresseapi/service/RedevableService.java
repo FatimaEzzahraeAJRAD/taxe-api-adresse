@@ -13,8 +13,8 @@ import java.util.List;
  * @author user
  */
 public interface RedevableService {
-        public Redevable findByCin(String cin);
-        public int creer(Redevable redevable);
+        public Redevable findByCin(String reference);
+        public Redevable  creer(Redevable redevable);
         public List<Redevable> findAll();
         public boolean existsById(Long id);
 }

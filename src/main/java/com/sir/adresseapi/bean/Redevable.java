@@ -33,7 +33,6 @@ public class Redevable implements Serializable {
     @OneToMany(mappedBy = "redevable")
     private List<Local> locals;
 
-
     public String getCin() {
         return cin;
     }

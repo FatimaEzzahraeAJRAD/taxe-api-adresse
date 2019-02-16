@@ -6,6 +6,8 @@
 package com.sir.adresseapi.rest;
 
 import com.sir.adresseapi.bean.Local;
+import com.sir.adresseapi.rest.converter.LocalConverter;
+import com.sir.adresseapi.rest.vo.LocalVo;
 import com.sir.adresseapi.service.LocalService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,38 +23,42 @@ import org.springframework.web.bind.annotation.RestController;
  * @author user
  */
 @RestController
-@RequestMapping({"/adresse-api/local"})
+@RequestMapping({"/taxe-api-souk/local"})
 public class LocalRest {
     
     @Autowired
-    LocalService LocalService;
+    LocalService localService;
 
     @GetMapping("/red/{cin}")
-    public List<Local> findByRedevableCin(@PathVariable String reference) {
-        return LocalService.findByRedevableCin(reference);
+    public List<LocalVo> findByRedevableCin(@PathVariable String cin) {
+        return new LocalConverter().toVo(localService.findByRedevableCin(cin));
     }
    
     @GetMapping("/reference/{reference}")
-    public Local findByReference(@PathVariable String reference) {
-        return LocalService.findByReference(reference);
+    public LocalVo findByReference(@PathVariable String reference) {
+       return new LocalConverter().toVo(localService.findByReference(reference));
     }
 
     @PostMapping("/")
-    public int creer(@RequestBody Local local) {
-        return LocalService.creer(local);
+    public LocalVo creer(@RequestBody LocalVo localVo) {
+        LocalConverter localConverter =new LocalConverter();
+        Local myLocal = localConverter.toItem(localVo);
+        Local local =localService.creer(myLocal);
+        return localConverter.toVo(local);
+       
     }
     @GetMapping("/all")
-    public List<Local> findAll() {
-        return LocalService.findAll();
+    public List<LocalVo> findAll() {
+        return new LocalConverter().toVo(localService.findAll());
     }
 
     
     public LocalService getLocalService() {
-        return LocalService;
+        return localService;
     }
 
     public void setLocalService(LocalService LocalService) {
-        this.LocalService = LocalService;
+        this.localService = LocalService;
     }
     
 }

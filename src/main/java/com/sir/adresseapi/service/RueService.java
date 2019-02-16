@@ -16,7 +16,7 @@ public interface RueService {
     
     public List<Rue> findByQuartierReference(String reference);
     public Rue findByReference(String reference);
-    public int creer(Rue rue);
+    public Rue creer(Rue rue);
     public List<Rue> findAll();
     
     public boolean existsById(Long id);

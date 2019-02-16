@@ -28,14 +28,14 @@ public class QuartierServiceImpl implements QuartierService{
     
 
     @Override
-    public int creer(Quartier quartier) {
+    public Quartier creer(Quartier quartier) {
              Secteur s = quartier.getSecteur();
               
              if(secteurService.existsById(s.getId())== false){
-                 return -1;
+                 return null;
              }else{
                  quartierDao.save(quartier);
-                 return 1;
+                 return quartier;
              }
             
     }

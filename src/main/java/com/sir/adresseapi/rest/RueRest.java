@@ -7,6 +7,8 @@ package com.sir.adresseapi.rest;
 
 import com.sir.adresseapi.bean.Quartier;
 import com.sir.adresseapi.bean.Rue;
+import com.sir.adresseapi.rest.converter.RueConverter;
+import com.sir.adresseapi.rest.vo.RueVo;
 import com.sir.adresseapi.service.QuartierService;
 import com.sir.adresseapi.service.RueService;
 import java.util.List;
@@ -23,28 +25,31 @@ import org.springframework.web.bind.annotation.RestController;
  * @author user
  */
 @RestController
-@RequestMapping({"/adresse-api/rue"})
+@RequestMapping({"/taxe-api-souk/rue"})
 public class RueRest {
     @Autowired
     RueService rueService;
 
     @GetMapping("/qua/{reference}")
-    public List<Rue> findByQuartierReference(@PathVariable String reference) {
-        return rueService.findByQuartierReference(reference);
+    public List<RueVo> findByQuartierReference(@PathVariable String reference) {
+        return new RueConverter().toVo(rueService.findByQuartierReference(reference));
     }
 
     @GetMapping("/reference/{reference}")
-    public Rue findByReference(@PathVariable String reference) {
-        return rueService.findByReference(reference);
+    public RueVo findByReference(@PathVariable String reference) {
+        return new RueConverter().toVo(rueService.findByReference(reference));
     }
 
     @PostMapping("/")
-    public int creer(@RequestBody Rue rue) {
-        return rueService.creer(rue);
+    public RueVo creer(@RequestBody RueVo rueVo) {
+        RueConverter rueConverter =new RueConverter();
+        Rue myRue = rueConverter.toItem(rueVo);
+        Rue rue =rueService.creer(myRue);
+        return rueConverter.toVo(rue);
     }
       @GetMapping("/all")
-    public List<Rue> findAll() {
-        return rueService.findAll();
+    public List<RueVo> findAll() {
+        return new RueConverter().toVo(rueService.findAll());
     }
 
     
