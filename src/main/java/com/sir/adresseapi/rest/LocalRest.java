@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author user
  */
 @RestController
-@RequestMapping({"/taxe-api-souk/local"})
+@RequestMapping({"/taxe-api/local"})
 public class LocalRest {
     
     @Autowired
@@ -35,7 +35,7 @@ public class LocalRest {
     }
    
     @GetMapping("/reference/{reference}")
-    public LocalVo findByReference(@PathVariable String reference) {
+    public LocalVo findByReference(@PathVariable("reference") String reference) {
        return new LocalConverter().toVo(localService.findByReference(reference));
     }
 
