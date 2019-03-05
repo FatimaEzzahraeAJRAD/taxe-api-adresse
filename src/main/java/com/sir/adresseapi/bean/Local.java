@@ -35,7 +35,8 @@ public class Local implements Serializable {
     private BigDecimal dernierMontantPaye ;
     private BigDecimal dernierTrimestrePaye ;
     private BigDecimal dernierAnneePaye ;
-    private String refCategorie;
+    @ManyToOne
+    private Categorie categorie;
 
     public Long getId() {
         return id;
@@ -109,13 +110,15 @@ public class Local implements Serializable {
         this.dernierAnneePaye = dernierAnneePaye;
     }
 
-    public String getRefCategorie() {
-        return refCategorie;
+    public Categorie getCategorie() {
+        return categorie;
     }
 
-    public void setRefCategorie(String refCategorie) {
-        this.refCategorie = refCategorie;
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
+
+   
 
    
 

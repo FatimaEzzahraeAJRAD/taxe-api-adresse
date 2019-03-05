@@ -5,17 +5,18 @@
  */
 package com.sir.adresseapi.service;
 
-import com.sir.adresseapi.bean.Local;
+import com.sir.adresseapi.bean.Categorie;
 import java.util.List;
 
 /**
  *
  * @author user
  */
-public interface LocalService {
-     public List<Local> findByRedevableCin(String cin);
-    public Local findByReference(String reference);
-    public List<Local> findAll();
-    public Local creer(Local local);
-
+public  interface CategorieService {
+     public int creer(Categorie categorie);
+   // public List<Categorie> findAll();
+      public Categorie findByRefCategorie(String refCategorie);
+  
+     
+        
 }

@@ -6,8 +6,8 @@
 package com.sir.adresseapi.rest.converter;
 
 import com.sir.adresseapi.bean.Local;
-import com.sir.adresseapi.common.util.NumberUtil;
 import com.sir.adresseapi.rest.vo.LocalVo;
+import com.sir.adresseapi.util.NumberUtil;
 import org.springframework.stereotype.Component;
 
 
@@ -41,8 +41,9 @@ public class LocalConverter extends AbstractConverter<Local, LocalVo>{
             if (vo.getDernierTrimestrePaye()!= null) {
                 item.setDernierTrimestrePaye(NumberUtil.toBigDecimal(vo.getDernierTrimestrePaye()));
             }
-            if(vo.getRefCategorie()!= null){
-                item.setRefCategorie(vo.getRefCategorie());
+            if(vo.getCategorieVo()!= null){
+                item.setCategorie(new CategorieConverter().toItem(vo.getCategorieVo()));
+              
             }      
             if(vo.getSurface()!= null){
                 item.setSurface(NumberUtil.toBigDecimal(vo.getSurface()));
@@ -73,8 +74,8 @@ public class LocalConverter extends AbstractConverter<Local, LocalVo>{
             if (item.getDernierTrimestrePaye()!= null) {
                 vo.setDernierTrimestrePaye(NumberUtil.toString(item.getDernierTrimestrePaye()));
             }
-            if(item.getRefCategorie()!= null){
-                vo.setRefCategorie(vo.getRefCategorie());
+            if(item.getCategorie()!= null){
+                vo.setCategorieVo(new CategorieConverter().toVo(item.getCategorie()));
             }      
             if(item.getSurface()!= null){
                 vo.setSurface(NumberUtil.toString(item.getSurface()));

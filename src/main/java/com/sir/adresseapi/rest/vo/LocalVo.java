@@ -21,7 +21,7 @@ public class LocalVo{
     private String dernierMontantPaye ;
     private String dernierTrimestrePaye ;
     private String dernierAnneePaye ;
-    private String refCategorie;
+    private CategorieVo categorieVo;
 
     public Long getId() {
         return id;
@@ -99,12 +99,12 @@ public class LocalVo{
         this.dernierAnneePaye = dernierAnneePaye;
     }
 
-    public String getRefCategorie() {
-        return refCategorie;
+    public CategorieVo getCategorieVo() {
+        return categorieVo;
     }
 
-    public void setRefCategorie(String refCategorie) {
-        this.refCategorie = refCategorie;
+    public void setCategorieVo(CategorieVo categorieVo) {
+        this.categorieVo = categorieVo;
     }
 
     
