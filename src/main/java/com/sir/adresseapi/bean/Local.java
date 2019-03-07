@@ -144,7 +144,9 @@ public class Local implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sir.adresseapi.bean.Local[ id=" + id + " ]";
+        return "Local{" + "id=" + id + ", reference=" + reference + ", surface=" + surface + ", redevable=" + redevable + ", proprietaire=" + proprietaire + ", rue=" + rue + ", dernierMontantPaye=" + dernierMontantPaye + ", dernierTrimestrePaye=" + dernierTrimestrePaye + ", dernierAnneePaye=" + dernierAnneePaye + ", categorie=" + categorie + '}';
     }
+
+   
     
 }

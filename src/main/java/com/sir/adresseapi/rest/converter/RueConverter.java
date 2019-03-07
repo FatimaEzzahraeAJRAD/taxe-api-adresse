@@ -30,8 +30,8 @@ public class RueConverter extends AbstractConverter<Rue, RueVo>{
             if (vo.getReference()!= null) {
                 item.setReference(vo.getReference());
             }
-             if (vo.getLocalVos()!= null) {
-                 item.setLocals(new LocalConverter().toItem(vo.getLocalVos()));
+             if (vo.getQuartierVo()!= null) {
+                 item.setQuartier(new QuartierConverter().toItem(vo.getQuartierVo()));
             } 
             return item;
         }
@@ -48,8 +48,8 @@ public class RueConverter extends AbstractConverter<Rue, RueVo>{
             if (item.getReference()!= null) {
                 vo.setReference(item.getReference());
             }
-             if (item.getLocals()!= null) {
-                 vo.setLocalVos(new LocalConverter().toVo(item.getLocals()));
+             if (item.getQuartier()!= null) {
+                 vo.setQuartierVo(new QuartierConverter().toVo(item.getQuartier()));
             } 
             return vo;
         }

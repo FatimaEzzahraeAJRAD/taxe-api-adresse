@@ -16,7 +16,6 @@ public  interface CategorieService {
      public int creer(Categorie categorie);
    // public List<Categorie> findAll();
       public Categorie findByRefCategorie(String refCategorie);
-  
      
         
 }

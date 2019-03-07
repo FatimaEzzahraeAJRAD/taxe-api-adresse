@@ -5,10 +5,12 @@
  */
 package com.sir.adresseapi.service.impl;
 
+import com.sir.adresseapi.bean.Categorie;
 import com.sir.adresseapi.bean.Local;
 import com.sir.adresseapi.bean.Redevable;
 import com.sir.adresseapi.bean.Rue;
 import com.sir.adresseapi.dao.LocalDao;
+import com.sir.adresseapi.service.CategorieService;
 import com.sir.adresseapi.service.LocalService;
 import com.sir.adresseapi.service.RedevableService;
 import com.sir.adresseapi.service.RueService;
@@ -30,6 +32,8 @@ public class LocalServiceImpl implements LocalService {
     RedevableService redevableService;
     @Autowired
     RueService rueService;
+    @Autowired
+    CategorieService categorieService;
 
     @Override
     public List<Local> findByRedevableCin(String cin) {
@@ -72,28 +76,12 @@ public class LocalServiceImpl implements LocalService {
         if (l != null) {
             return null;
         } else {
-            Redevable r = local.getRedevable();
-            Redevable p = local.getProprietaire();
-            Rue rue = local.getRue();
-
-//        Categorie c= local.getCategorie();
-            if (redevableService.existsById(r.getId()) == false) {
-                return null;
-            } else if (redevableService.existsById(p.getId()) == false) {
-                return null;
-            } else if (rueService.existsById(rue.getId()) == false) {
-                return null;
-            } //        else if(categorieService.existsById(c.getId())==false){
-            //            return -4;
-            //        }
-            else {
-                local.setDernierAnneePaye(BigDecimal.ZERO);
-                local.setDernierTrimestrePaye(BigDecimal.ZERO);
-                localDao.save(local);
-                return local;
-            }
+//            local.setDernierAnneePaye(BigDecimal.ZERO);
+//            local.setDernierTrimestrePaye(BigDecimal.ZERO);
+            localDao.save(local);
+            System.out.println("local "+local);;
+            return local;
         }
-//      
     }
 
     @Override

@@ -28,16 +28,16 @@ public class Categorie implements Serializable {
     private Long id;
     private String libelle;
     private String refCategorie;
-    @OneToMany(mappedBy = "categorie")
-    private List<Local> locals;
+//    @OneToMany(mappedBy = "categorie")
+//    private List<Local> locals;
 
-    public List<Local> getLocals() {
-        return locals;
-    }
+ //   public List<Local> getLocals() {
+//        return locals;
+ //   }
 
-    public void setLocals(List<Local> locals) {
-        this.locals = locals;
-    }
+ //   public void setLocals(List<Local> locals) {
+  //      this.locals = locals;
+ //   }
 
     
     

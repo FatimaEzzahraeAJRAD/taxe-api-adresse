@@ -16,6 +16,6 @@ public interface LocalService {
      public List<Local> findByRedevableCin(String cin);
     public Local findByReference(String reference);
     public List<Local> findAll();
-    public Local creer(Local local);
+    public Local  creer(Local local);
 
 }

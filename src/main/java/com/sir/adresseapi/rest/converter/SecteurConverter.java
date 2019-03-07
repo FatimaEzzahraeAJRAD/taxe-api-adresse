@@ -27,9 +27,7 @@ public class SecteurConverter extends AbstractConverter<Secteur, SecteurVo>{
             if (vo.getReference() != null) {
                 item.setReference(vo.getReference());
             }
-            if (vo.getQuartierVos()!= null) {
-                 item.setQuartiers(new QuartierConverter().toItem(vo.getQuartierVos()));
-            }
+           
             return item;  
         }
         return null;
@@ -46,9 +44,7 @@ public class SecteurConverter extends AbstractConverter<Secteur, SecteurVo>{
             if (item.getReference() != null) {
                 vo.setReference(item.getReference());
             }
-            if (item.getQuartiers()!= null) {
-                vo.setQuartierVos(new QuartierConverter().toVo(item.getQuartiers()));
-            }
+          
            return vo;
         }
         return null;

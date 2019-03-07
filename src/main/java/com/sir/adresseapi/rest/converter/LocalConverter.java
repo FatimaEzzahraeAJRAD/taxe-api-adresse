@@ -44,7 +44,15 @@ public class LocalConverter extends AbstractConverter<Local, LocalVo>{
             if(vo.getCategorieVo()!= null){
                 item.setCategorie(new CategorieConverter().toItem(vo.getCategorieVo()));
               
-            }      
+            }  
+             if(vo.getRueVo()!= null){
+                item.setRue(new RueConverter().toItem(vo.getRueVo()));
+              
+            }    
+             if(vo.getRedevableVo()!= null){
+                item.setRedevable(new RedevableConverter().toItem(vo.getRedevableVo()));
+              
+            }    
             if(vo.getSurface()!= null){
                 item.setSurface(NumberUtil.toBigDecimal(vo.getSurface()));
             }
@@ -76,7 +84,13 @@ public class LocalConverter extends AbstractConverter<Local, LocalVo>{
             }
             if(item.getCategorie()!= null){
                 vo.setCategorieVo(new CategorieConverter().toVo(item.getCategorie()));
-            }      
+            }     
+              if(item.getRue()!= null){
+                vo.setRueVo(new RueConverter().toVo(item.getRue()));
+            }    
+              if(item.getRedevable()!= null){
+                vo.setRedevableVo(new RedevableConverter().toVo(item.getRedevable()));
+            }    
             if(item.getSurface()!= null){
                 vo.setSurface(NumberUtil.toString(item.getSurface()));
             }

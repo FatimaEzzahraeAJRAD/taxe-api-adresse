@@ -20,6 +20,7 @@ public class CategorieConverter  extends AbstractConverter<Categorie, CategorieV
         if (vo == null) {
             return null;
         } else {
+            
             Categorie item = new Categorie();
             item.setId(vo.getId());
             item.setLibelle(vo.getLibelle());
@@ -34,9 +35,15 @@ public class CategorieConverter  extends AbstractConverter<Categorie, CategorieV
             return null;
         } else {
             CategorieVo vo = new CategorieVo();
-            vo.setId(item.getId());
-            vo.setLibelle(item.getLibelle());
-            vo.setRefCategorie(item.getRefCategorie());
+            if(item.getId()!=null){
+                vo.setId(item.getId());
+            }
+            if(item.getLibelle()!=null){
+                  vo.setLibelle(item.getLibelle());
+            }
+            if(item.getRefCategorie()!=null){
+                vo.setRefCategorie(item.getRefCategorie());
+            }
             return vo;
         }
     }
